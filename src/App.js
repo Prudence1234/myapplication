@@ -1,9 +1,19 @@
 import React,{useState} from "react"
+import Boxes from './Boxes';
+import Box from "./Box";
+import './App.css'
 
 
-const App = () => {
+const App = (props) => {
 
   const [count,setCount]=useState(0)
+  const[squares,setSquares]=useState(Boxes)
+  
+  
+
+  const squareElements=squares.map(square =>(
+    <Box key={square.id} on={square.on} />
+    ))
 
   function Add(){
       setCount(prevCount =>prevCount + 1)
@@ -21,6 +31,7 @@ const App = () => {
       <div>
       <h1>{count}</h1>
         <button onClick={Add}> +</button>
+        {squareElements}
       </div>
    )
    </div>
